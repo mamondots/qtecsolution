@@ -1,0 +1,18 @@
+.slick-dots li {
+   
+    bottom:80px;
+  }
+  .slick-dots li button::before {
+   display:flex;
+   justify-content:center;
+   align-items:center;
+   width: 20px;
+   height: 20px;
+   border: 2px solid #74D09D;
+   border-radius:100%;
+   font-size: 0;
+  }
+  .slick-dots li.slick-active button::before {
+    background-color: #74D09D;
+    
+  }
