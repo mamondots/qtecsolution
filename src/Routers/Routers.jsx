@@ -1,7 +1,7 @@
+import Main from "@/Layout/Main";
+import Home from "@/pages/Home_pages/Home/Home";
+import ProductDetails from "@/pages/Home_pages/ProductDetails/ProductDetails";
 import { createBrowserRouter } from "react-router-dom";
-import Main from "../Layout/Main";
-import Home from "../pages/Home_pages/Home/Home";
-import ProductDetails from "../pages/Home_pages/ProductDetails/ProductDetails";
 
 export const router = createBrowserRouter([
   {

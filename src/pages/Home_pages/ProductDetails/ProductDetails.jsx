@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
 import image1 from "../../../assets/products/dress1.webp";
-import { FaFire, FaLaptopMedical } from "react-icons/fa";
+import { FaFire } from "react-icons/fa";
 import { BiMinus, BiPlus } from "react-icons/bi";
 const ProductDetails = () => {
   const [count, setCount] = useState(1);

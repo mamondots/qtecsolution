@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo/logo.svg";
-import { BsCart3 } from "react-icons/bs";
+
+import CartSideBar from "./CartSideBar";
 
 const NavBar = () => {
   return (
@@ -20,7 +21,7 @@ const NavBar = () => {
           </ul>
         </div>
         <div>
-          <BsCart3 />
+          <CartSideBar />
         </div>
       </div>
     </div>
