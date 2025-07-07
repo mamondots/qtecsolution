@@ -9,6 +9,7 @@ import img from "../assets/products/dress1.webp";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useState } from "react";
 import { BiMinus, BiPlus } from "react-icons/bi";
+import Checkout from "./Checkout";
 const CartSideBar = () => {
   const [count, setCount] = useState(1);
   const handleIncrement = () => {
@@ -114,7 +115,7 @@ const CartSideBar = () => {
                 view cart
               </div>
               <div className="flex-1 bg-[#02D7F8] hover:bg-[#262626] duration-300 text-white text-center capitalize py-2 cursor-pointer">
-                checkout
+                <Checkout />
               </div>
             </div>
           </SheetFooter>
