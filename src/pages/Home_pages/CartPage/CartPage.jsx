@@ -113,7 +113,7 @@ const CartPage = () => {
       <div className="flex flex-col gap-8 justify-between items-center my-12">
         <div className="text-2xl">
           Total Amount (৳):
-          <span className="text-3xl font-bold text-green-600"> 500</span>
+          <span className="text-3xl font-bold text-[#059CFA]"> 500</span>
         </div>
         <div className="text-white text-sm font-semibold items-center text-center w-[70%] sm:w-[50%] md:w-[40%]  bg-[#059CFA] rounded  hover:bg-[#02D7F8] duration-300 px-2 py-2">
           <span>

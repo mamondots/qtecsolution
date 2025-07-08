@@ -7,9 +7,11 @@ const NavBar = () => {
   return (
     <div className="container mt-4">
       <div className="flex items-center justify-between border px-4 py-2 rounded">
-        <div className="w-[50px] h-[50px]">
-          <img src={logo} alt="logo" className="w-full h-full" />
-        </div>
+        <Link to="/">
+          <div className="w-[50px] h-[50px]">
+            <img src={logo} alt="logo" className="w-full h-full" />
+          </div>
+        </Link>
         <div>
           <ul className="flex items-center gap-3">
             <Link to="/">
