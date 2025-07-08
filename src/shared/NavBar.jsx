@@ -15,7 +15,7 @@ const NavBar = () => {
             <Link to="/">
               <li className="hover:text-[#059CFA] duration-300">Home</li>
             </Link>
-            <Link to="/">
+            <Link to="/cart">
               <li className="hover:text-[#059CFA] duration-300">Cart</li>
             </Link>
           </ul>
