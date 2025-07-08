@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo/logo.svg";
 
 import CartSideBar from "./CartSideBar";
+import { useGetAllCartsQuery } from "@/redux/features/cart/cartApi";
 
 const NavBar = () => {
+  const { data: carts } = useGetAllCartsQuery();
+  console.log("all cart product", carts);
   return (
     <div className="container mt-4">
       <div className="flex items-center justify-between border px-4 py-2 rounded">
@@ -23,7 +26,7 @@ const NavBar = () => {
           </ul>
         </div>
         <div>
-          <CartSideBar />
+          <CartSideBar carts={carts} />
         </div>
       </div>
     </div>

@@ -4,8 +4,12 @@ import { Link, useParams } from "react-router-dom";
 import { FaFire } from "react-icons/fa";
 import { BiMinus, BiPlus } from "react-icons/bi";
 import { useGetSingleProductQuery } from "@/redux/features/products/productaApi";
+import { useAddToCartMutation } from "@/redux/features/cart/cartApi";
+import toast from "react-hot-toast";
 const ProductDetails = () => {
   const id = useParams();
+  const [addToCart, { isLoading }] = useAddToCartMutation();
+
   const { data: product } = useGetSingleProductQuery(id);
   const [count, setCount] = useState(1);
   const handleIncrement = () => {
@@ -14,6 +18,20 @@ const ProductDetails = () => {
 
   const handleDecrement = () => {
     setCount((prev) => (prev > 0 ? prev - 1 : 0));
+  };
+
+  const handleAddToCart = async () => {
+    try {
+      const params = {
+        productRef: product?.data?._id,
+        quantity: count,
+      };
+      await addToCart({ params }).unwrap();
+      toast.success("Product added to cart!");
+    } catch (err) {
+      console.error("Failed to add to cart:", err);
+      toast.error("Failed to add product to cart. Please try again.");
+    }
   };
 
   console.log("products details", product);
@@ -107,9 +125,12 @@ const ProductDetails = () => {
                 <BiMinus size={16} />
               </p>
             </div>
-            <div className="w-full bg-[#059CFA] hover:bg-[#01D7F8] cursor-pointer duration-300 rounded text-white text-center py-1.5">
+            <div
+              onClick={isLoading ? undefined : handleAddToCart}
+              className="w-full bg-[#059CFA] hover:bg-[#01D7F8] cursor-pointer duration-300 rounded text-white text-center py-1.5"
+            >
               <button className="text-sm outline-none cursor-pointer">
-                Add To Cart
+                {isLoading ? "Adding..." : "Add to cart"}
               </button>
             </div>
           </div>
