@@ -1,4 +1,4 @@
-# 🛒 Mini E-commerce (client side
+# 🛒 Mini E-commerce (client side)
 
 This is a mini e-commerce client-side  which I created with the help of **reactjs**, **tailwind css**, **redux**, and **scadcn**.
 
@@ -14,6 +14,6 @@ then npm i
 
 then npm run dev
 
-## the server live link 
+## the client live link 
 https://qtecsolution.vercel.app/
 
