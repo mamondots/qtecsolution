@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import { Link } from "react-router-dom";
-import image1 from "../../../assets/products/dress1.webp";
+import { Link, useParams } from "react-router-dom";
 import { FaFire } from "react-icons/fa";
 import { BiMinus, BiPlus } from "react-icons/bi";
+import { useGetSingleProductQuery } from "@/redux/features/products/productaApi";
 const ProductDetails = () => {
+  const id = useParams();
+  const { data: product } = useGetSingleProductQuery(id);
   const [count, setCount] = useState(1);
   const handleIncrement = () => {
     setCount((prev) => prev + 1);
@@ -13,6 +15,8 @@ const ProductDetails = () => {
   const handleDecrement = () => {
     setCount((prev) => (prev > 0 ? prev - 1 : 0));
   };
+
+  console.log("products details", product);
   return (
     <div className="container mt-6">
       <div className="flex items-center  gap-1">
@@ -25,17 +29,17 @@ const ProductDetails = () => {
           <MdKeyboardArrowRight />
         </p>
         <p className="text-[#262626]/80 lg:text-base text-sm">
-          Purple Pabna Cotton Monipuri Buti Saree
+          {product?.data?.title}
         </p>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-8 py-8">
         <div className="border rounded flex items-center justify-center p-4">
-          <img src={image1} alt="details" className="rounded" />
+          <img src={product?.data?.image} alt="details" className="rounded" />
         </div>
         <div className="">
           <h1 className="text-xl font-semibold text-[#262629]/90">
-            Purple Pabna Cotton Monipuri Buti Saree
+            {product?.data?.title}
           </h1>
 
           <p className="mt-1 flex items-center gap-1 text-lg">
@@ -46,42 +50,32 @@ const ProductDetails = () => {
           </p>
 
           <div className="flex items-center gap-3 mt-2">
-            {/* <p className="text-lg font-semibold">৳ {price}</p> */}
-            <p className="text-2xl font-semibold">৳ 600</p>
-            {/* {mrpPrice && (
-              <p className="text-[red] line-through text-sm">৳ {mrpPrice}</p>
-            )} */}
-
-            <p className="text-[red] line-through text-lg">৳ 700</p>
+            <p className="text-lg font-semibold">৳ {product?.data?.price}</p>
+            {product?.data?.mrpPrice && (
+              <p className="text-[red] line-through text-sm">
+                ৳ {product?.data?.mrpPrice}
+              </p>
+            )}
           </div>
 
-          {/* <p className="mt-1 text-sm text-[#262629]/80 line-clamp-2">
-            {description}
-          </p> */}
-          <p className="mt-2 text-base text-[#262629]/80 line-clamp-3">
-            Green texture printed vortex-viscose-cotton kameez with purple
-            embroidery. Comes with green printed vortex-viscose-cotton shalwar
-            and matching printed viscose-cotton dupatta with tassels.
-          </p>
-          {/* <p className="mt-2 text-sm text-[#262629]/80 line-clamp-2">
-            <span className="font-semibold">sku</span> : {sku}
-          </p> */}
-          <p className="mt-2  text-[#262629]">
-            <span className="font-semibold">sku</span> :{" "}
-            <span className="text-sm">AB-58422</span>
-          </p>
-          {/* <p className="mt-2 text-sm text-[#262629]/80 line-clamp-2">
-            <span className="font-semibold">Availability</span> : {availability}
-          </p> */}
-          <p className="mt-2  text-[#262629]/80">
-            <span className="font-semibold">Availability</span> :{" "}
-            <span className="text-sm">In Stack</span>
+          <p className="mt-1 text-sm text-[#262629]/80">
+            {product?.data?.description}
           </p>
 
-          <div className="mt-2  text-[#262629]">
+          <p className="mt-2 text-sm text-[#262629]/80">
+            <span className="font-semibold">SKU</span> :{" "}
+            <span className="text-sm">{product?.data?.sku}</span>
+          </p>
+
+          <p className="mt-2  text-[#262629]/80">
+            <span className="font-semibold">Availability</span> :{" "}
+            <span className="text-sm">{product?.data?.availability}</span>
+          </p>
+
+          <div className="mt-2 flex items-center gap-1  text-[#262629]">
             <p className="font-semibold">Size :</p>
-            {/* <p className="flex items-center gap-1 mt-1">
-              {size.map((item, index) => (
+            <p className="flex items-center gap-1 mt-1">
+              {product?.data?.size.map((item, index) => (
                 <span
                   key={index}
                   className="border border-[#262629]/40 px-2 rounded text-sm capitalize cursor-pointer hover:border-primary/40 hover:text-primary duration-300"
@@ -89,8 +83,13 @@ const ProductDetails = () => {
                   {item}
                 </span>
               ))}
-            </p> */}
+            </p>
           </div>
+
+          <p className="mt-2 text-sm text-[#262629]/80">
+            <span className="font-semibold">Category</span> :{" "}
+            <span className="text-sm">{product?.data?.category}</span>
+          </p>
 
           <div className="flex items-center gap-2 mt-3">
             <div className="flex items-center justify-between border border-[#262629]/40 hover:border-[#059CFA]/40 duration-300 rounded px-2 py-1 md:w-[45%] w-[30%]">

@@ -1,7 +1,10 @@
-import { productList } from "../../../utilits/newProducts";
+// import { productList } from "../../../utilits/newProducts";
+import { useGetProductsQuery } from "@/redux/features/products/productaApi";
 import ProductCard from "../ProductCard/ProductCard";
 
 const Products = () => {
+  const { data: products } = useGetProductsQuery("");
+  console.log("find products", products);
   return (
     <div className="container mt-8">
       <div className="flex items-center justify-center flex-col text-center">
@@ -13,8 +16,8 @@ const Products = () => {
       </div>
 
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-4 gap-2 py-8">
-        {productList.map((product) => (
-          <ProductCard key={product.id} product={product}></ProductCard>
+        {products?.data?.map((product) => (
+          <ProductCard key={product._id} product={product}></ProductCard>
         ))}
       </div>
     </div>

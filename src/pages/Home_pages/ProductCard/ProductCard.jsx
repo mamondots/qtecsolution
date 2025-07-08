@@ -2,11 +2,11 @@ import { BsCart3 } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const { title, price, mrpPrice, image, id, label } = product;
+  const { title, price, mrpPrice, image, _id, label } = product;
   return (
     <div className="group">
       <div className="border rounded cursor-pointer  group-hover:border-[#059CFA]/20 duration-300">
-        <Link to={`/product/${id}`}>
+        <Link to={`/product/${_id}`}>
           <div className="lg:h-[280px] relative overflow-hidden">
             <img
               src={image}
@@ -17,7 +17,7 @@ const ProductCard = ({ product }) => {
         </Link>
 
         <div className="px-3 py-3">
-          <Link to={`/product/${id}`}>
+          <Link to={`/product/${_id}`}>
             <h1 className="text-base font-semibold text-[#262626]/80 group-hover:text-[#059CFA] duration-300 line-clamp-1">
               {title}
             </h1>
